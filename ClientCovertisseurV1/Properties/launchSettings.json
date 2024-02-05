@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ClientCovertisseurV1 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ClientCovertisseurV1 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

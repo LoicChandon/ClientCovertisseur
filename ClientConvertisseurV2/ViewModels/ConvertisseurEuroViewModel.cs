@@ -72,7 +72,7 @@ namespace ClientConvertisseurV2.ViewModels
             List<Devise> result = await service.GetDevisesAsync("devises");
             if (result == null)
             {
-                DisplayNoAPIDialog();
+                MessageAsync("API indisponible", "Relance l'API chakal");
             }
             else
                 ListeDevises = new ObservableCollection<Devise>(result);
@@ -82,34 +82,22 @@ namespace ClientConvertisseurV2.ViewModels
             //Code du calcul à écrire
             if (SelectedDevise == null)
             {
-                DisplayNoDeviseDialog();
+                MessageAsync("Erreur", "Faut selectionner une devise zebi");
             }
             else
                 MontantPostDevise = MontantInitial * SelectedDevise.Taux;
         }
-        private async void DisplayNoAPIDialog()
+        private async void MessageAsync(string titre, string content)
         {
-            ContentDialog noAPIDialog = new ContentDialog
+            ContentDialog contentDialog = new ContentDialog
             {
-                Title = "API indisponible",
-                Content = "Relance l'API chakal",
+                Title = titre,
+                Content = content,
                 CloseButtonText = "Ok"
             };
-            noAPIDialog.XamlRoot = App.MainRoot.XamlRoot;
+            contentDialog.XamlRoot = App.MainRoot.XamlRoot;
 
-            ContentDialogResult result = await noAPIDialog.ShowAsync();
-        }
-        private async void DisplayNoDeviseDialog()
-        {
-            ContentDialog noDeviseDialog = new ContentDialog
-            {
-                Title = "Erreur",
-                Content = "Faut selectionner une devise zebi",
-                CloseButtonText = "Ok"
-            };
-            noDeviseDialog.XamlRoot = App.MainRoot.XamlRoot;
-
-            ContentDialogResult result = await noDeviseDialog.ShowAsync();
+            ContentDialogResult result = await contentDialog.ShowAsync();
         }
     }
 }
