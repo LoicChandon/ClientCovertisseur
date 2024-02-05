@@ -9,6 +9,7 @@ using ClientConvertisseurV2.Models;
 using ClientConvertisseurV2.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Xaml.Controls;
 
 namespace ClientConvertisseurV2.ViewModels
 {
@@ -69,12 +70,46 @@ namespace ClientConvertisseurV2.ViewModels
         {
             WSService service = new WSService("http://localhost:12278/api/");
             List<Devise> result = await service.GetDevisesAsync("devises");
-            ListeDevises = new ObservableCollection<Devise>(result);
+            if (result == null)
+            {
+                DisplayNoAPIDialog();
+            }
+            else
+                ListeDevises = new ObservableCollection<Devise>(result);
         }
         private void ActionSetConversion()
         {
             //Code du calcul à écrire
-            MontantPostDevise = MontantInitial * SelectedDevise.Taux;
+            if (SelectedDevise == null)
+            {
+                DisplayNoDeviseDialog();
+            }
+            else
+                MontantPostDevise = MontantInitial * SelectedDevise.Taux;
+        }
+        private async void DisplayNoAPIDialog()
+        {
+            ContentDialog noAPIDialog = new ContentDialog
+            {
+                Title = "API indisponible",
+                Content = "Relance l'API chakal",
+                CloseButtonText = "Ok"
+            };
+            noAPIDialog.XamlRoot = App.MainRoot.XamlRoot;
+
+            ContentDialogResult result = await noAPIDialog.ShowAsync();
+        }
+        private async void DisplayNoDeviseDialog()
+        {
+            ContentDialog noDeviseDialog = new ContentDialog
+            {
+                Title = "Erreur",
+                Content = "Faut selectionner une devise zebi",
+                CloseButtonText = "Ok"
+            };
+            noDeviseDialog.XamlRoot = App.MainRoot.XamlRoot;
+
+            ContentDialogResult result = await noDeviseDialog.ShowAsync();
         }
     }
 }
