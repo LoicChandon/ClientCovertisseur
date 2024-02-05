@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using ClientConvertisseurV1.Views;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -19,7 +20,7 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace ClientCovertisseurV1
+namespace ClientConvertisseurV1
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -42,7 +43,10 @@ namespace ClientCovertisseurV1
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = new MainWindow();
+            Frame rootFrame = new Frame();
+            this.m_window.Content = rootFrame;
             m_window.Activate();
+            rootFrame.Navigate(typeof(ConvertisseurEuroPage));
         }
 
         private Window m_window;

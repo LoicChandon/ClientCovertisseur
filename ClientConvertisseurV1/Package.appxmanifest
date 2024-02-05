@@ -8,14 +8,14 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="216544f1-1737-4163-9913-1b5024fd6d9b"
+    Name="bdb9e579-337b-47f2-a180-0366aa416e53"
     Publisher="CN=chandonl"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="216544f1-1737-4163-9913-1b5024fd6d9b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="bdb9e579-337b-47f2-a180-0366aa416e53" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>ClientCovertisseurV1</DisplayName>
+    <DisplayName>ClientConvertisseurV1</DisplayName>
     <PublisherDisplayName>chandonl</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -34,8 +34,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="ClientCovertisseurV1"
-        Description="ClientCovertisseurV1"
+        DisplayName="ClientConvertisseurV1"
+        Description="ClientConvertisseurV1"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
